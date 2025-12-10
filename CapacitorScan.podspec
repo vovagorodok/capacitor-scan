@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/Plugin/**/*.{swift,h,hpp,m,c,cc,mm,cpp}', 'scan/src/**/*.{h,hpp,cpp}', 'lib/*.h'
   s.public_header_files = 'ios/Plugin/**/*.{h}'
   s.exclude_files = 'scan/src/Makefile'
-  s.ios.deployment_target  = '13.0'
+  s.ios.deployment_target = '14.0'
   s.dependency 'Capacitor'
   s.swift_version = '5.1'
   s.compiler_flags = '-fmodules -fcxx-modules'
