@@ -59,7 +59,7 @@ public final class Scan extends Plugin {
     }
     JSObject ret = new JSObject();
     ret.put("value", abi);
-    call.success(ret);
+    call.resolve(ret);
   }
 
   @PluginMethod
@@ -72,7 +72,7 @@ public final class Scan extends Plugin {
     long maxMemInMB = (memInfo.totalMem / 16) / (1024L * 1024L);
     JSObject ret = new JSObject();
     ret.put("value", maxMemInMB);
-    call.success(ret);
+    call.resolve(ret);
   }
 
   @PluginMethod
@@ -80,14 +80,14 @@ public final class Scan extends Plugin {
     if (supportedArch && !isInit) {
       String variant = call.getString("variant");
       if (variant == null) {
-        call.error("Must provide a variant");
+        call.reject("Must provide a variant");
         return;
       }
       Context context = getContext();
       jniInit(variant, context.getAssets());
       isInit = true;
     }
-    call.success();
+    call.resolve();
   }
 
   @PluginMethod
@@ -95,20 +95,20 @@ public final class Scan extends Plugin {
     if (isInit) {
       String cmd = call.getString("cmd");
       if (cmd == null) {
-        call.error("Must provide a cmd");
+        call.reject("Must provide a cmd");
         return;
       }
       jniCmd(cmd);
-      call.success();
+      call.resolve();
     } else {
-      call.error("Please call start before doing anything.");
+      call.reject("Please call start before doing anything.");
     }
   }
 
   @PluginMethod
   public void exit(PluginCall call) {
     doExit();
-    call.success();
+    call.resolve();
   }
 
   @Override
