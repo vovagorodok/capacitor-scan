@@ -18,7 +18,7 @@ apply plugin: 'com.android.library'
 
 android {
     namespace "org.lidraughts.mobileapp.scan.capacitorscan"
-    ndkVersion '23.1.7779620'
+    ndkVersion '27.0.12077973'
     compileSdk project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 35
     defaultConfig {
         minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 23

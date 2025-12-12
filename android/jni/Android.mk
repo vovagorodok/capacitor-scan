@@ -31,6 +31,7 @@ LOCAL_SRC_FILES := \
 	../../scan/src/util.cpp \
 	../../scan/src/var.cpp
 LOCAL_LDLIBS := -llog -landroid
+LOCAL_LDFLAGS += -Wl,-z,max-page-size=16384
 LOCAL_ARM_NEON := true
 
 include $(BUILD_SHARED_LIBRARY)
